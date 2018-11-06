@@ -60,13 +60,13 @@ for(b in 1:n){
 	while(s != n + 1 ){ #sが1,2,3である間ループ*)
 		k <- nextgirl[s]
 		gid =prefb[[s]][k]#k=1からスタート
-		if(prefg[[gid]][s] < prefg[[gid]][tempboy[gid]])#compare rank
-		{	t = tempboy[gid]#現在仮マッチしている男性idをtに割り当て
+		if(prefg[[gid]][s] < prefg[[gid]][tempboy[gid]])#現在の相手順位＜仮の相手順位
+		{	t = tempboy[gid]#仮の相手を捨てる
 		print(c("t=",t))#初回はt=n+1，入れ替わるとt=以前に仮マッチした男性ID　
-		tempboy[gid] = s # print("仮マッチした男性のid")
-		s = t  # 次のsを指定する．
+		tempboy[gid] = s # 仮の相手を入れ替え
+		s = t  # 次のs(proposer)を指定する．
 		} #if 条件が真の場合の実行文終わり
-		else{#もしsが拒否されたらnextgirl[s]に1を足します
+		else{#もしsが拒否されたらnextgirl[s]に1を足す
 		nextgirl[s] <- nextgirl[s]+1
 		}
 	} # whileここで終わり
